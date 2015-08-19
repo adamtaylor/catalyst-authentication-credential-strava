@@ -1,6 +1,8 @@
 # ABSTRACT: Catalyst Authentication using Strava
 package Catalyst::Authentication::Credential::Strava;
 
+# VERSION
+
 =head1 SYNOPSIS
 
     package MyApp;
@@ -22,17 +24,25 @@ package Catalyst::Authentication::Credential::Strava;
 
 =head1 DESCRIPTION
 
-Authenticate your Catalyst application's users using Strava's OAuth API.
+Authenticate your Catalyst application's users using L<Strava's OAuth API|https://www.strava.com/developers>.
 
 =head1 ATTRIBUTES
 
 =head2 C<client_id>
 
+This is provided by Strava's API when you set up your application.
+
 =head2 C<client_secret>
+
+This is provided by Strava's API when you set up your application.
 
 =head1 METHODS
 
 =head2 C<authenticate>
+
+    my $user = $c->authenticate();
+
+Attempts to authenticate a user using Strava's OAuth API.
 
 =cut
 
@@ -55,7 +65,6 @@ has 'client_secret' => (
 has 'client' => (
     isa => 'LWP::Authen::OAuth2',
     is => 'rw',
-    handles => ['get'],
 );
 
 sub BUILDARGS {
